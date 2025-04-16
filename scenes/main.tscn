@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cahvjbtwhrdmm"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerStatsLable" type="Label" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 16.0
+offset_right = 314.0
+offset_bottom = 58.0
+
+[node name="MonsterStatsLable" type="Label" parent="."]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 27.0
+offset_right = 1042.0
+offset_bottom = 86.0
+
+[node name="DrawButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 543.0
+offset_right = 1125.0
+offset_bottom = 597.0
+text = "\"Draw Cards\""
+
+[node name="GameManager" type="Node" parent="."]
