@@ -1,7 +1,10 @@
 extends Node
 
+@export var CardButtonScene: PackedScene
+
 @onready var player_label = $'../PlayerStatsLabel'
 @onready var monster_label = $'../MonsterStatsLabel'
+@onready var hand_container = $'../HandContainer'
 
 
 var player_health = 20
@@ -33,17 +36,30 @@ func start_player_turn():
 	update_stats()
 	print("Player's turn")
 
-func draw_cards(n):
+func draw_cards(n: int) -> void:
 	hand.clear()
+	hand_container.clear_children()
+	
 	for i in range(n):
-		if deck.size() == 0 and discard_pile.size() > 0:
-			deck = discard_pile
-			discard_pile = []
+		if deck.is_empty() and discard_pile.size() > 0:
+			deck = discard_pile.duplicate()
+			discard_pile.clear()
 			deck.shuffle()
-		if deck.size() > 0:
+			
+		if not deck.is_empty():
 			var card = deck.pop_back()
 			hand.append(card)
-	print("Hand: ", hand)
+			
+			#create card button
+			var card_button = CardButtonScene.instantiate()
+			card_button.card_type = card
+			card_button.card_played.connect(_on_card_played)
+			hand_container.add_child(card_button)
+			
+	print("Hand (%d): %s" % [hand.size(), hand])
+
+func _on_card_played(card_type: String) -> void:
+	print("Played card: ", card_type)
 
 
 func update_stats():
@@ -51,6 +67,8 @@ func update_stats():
 	player_label.text = "Player HP: %d | Mana: %d" % [player_health,mana]
 	monster_label.text = "Monster HP: %d" % monster_health
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass

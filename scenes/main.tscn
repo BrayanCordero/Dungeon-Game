@@ -1,10 +1,17 @@
-[gd_scene format=3 uid="uid://cahvjbtwhrdmm"]
+[gd_scene load_steps=3 format=3 uid="uid://cahvjbtwhrdmm"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_uy8hs"]
+[ext_resource type="PackedScene" uid="uid://ddi702ujoo5t6" path="res://scenes/CardButton.tscn" id="2_n22xg"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_uy8hs")
+CardButtonScene = ExtResource("2_n22xg")
 
 [node name="PlayerStatsLable" type="Label" parent="."]
 layout_mode = 0
@@ -20,12 +27,10 @@ offset_top = 27.0
 offset_right = 1042.0
 offset_bottom = 86.0
 
-[node name="DrawButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1013.0
-offset_top = 543.0
-offset_right = 1125.0
-offset_bottom = 597.0
-text = "\"Draw Cards\""
-
-[node name="GameManager" type="Node" parent="."]
+[node name="HandContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+offset_left = 409.0
+offset_top = 514.0
+offset_right = 837.0
+offset_bottom = 596.0

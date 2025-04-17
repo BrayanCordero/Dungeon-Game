@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddi702ujoo5t6"]
+
+[ext_resource type="Script" path="res://scripts/CardButton.gd" id="1_bf1ip"]
+
+[node name="CardButton" type="Button"]
+size_flags_horizontal = 3
+script = ExtResource("1_bf1ip")
